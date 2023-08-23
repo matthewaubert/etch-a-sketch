@@ -4,6 +4,7 @@ function startGame() {
   createGrid();
   moveSlider();
   clearBoard();
+  toggleGrid();
 }
 
 // function to create grid; input: size (default 16)
@@ -55,4 +56,20 @@ function clearBoard() {
     // iterate over divs, replace triggered class with waiting class
     triggered.forEach(div => div.classList.replace('triggered', 'waiting'));
   });
+}
+
+// function to toggle grid lines
+function toggleGrid() {
+  // select all divs with borders applied
+  const topLeft = document.querySelectorAll('.border-top-left');
+  const right = document.querySelectorAll('.border-right');
+  const bottom = document.querySelectorAll('.border-bottom');
+  // add event listener to Toggle Grid Lines button
+  const gridBtn = document.querySelector('#grid-btn');
+  gridBtn.addEventListener('click', () => {
+    // iterate over divs, toggling border class
+    topLeft.forEach(div => div.classList.toggle('border-top-left'));
+    right.forEach(div => div.classList.toggle('border-right'));
+    bottom.forEach(div => div.classList.toggle('border-bottom'));
+  })
 }
