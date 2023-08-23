@@ -1,5 +1,16 @@
+#container {
+  width: 600px;
+  height: 600px;
+}
+
 .row {
   display: flex;
+  /* height: 6.25%; */
+}
+
+.column {
+  box-sizing: border-box;
+  /* width: 6.25%; */
 }
 
 .waiting {
@@ -8,4 +19,17 @@
 
 .triggered {
   background-color: black;
+}
+
+.border-top-left {
+  border-top: solid rgb(160, 160, 160) 1px;
+  border-left: solid rgb(160, 160, 160) 1px;
+}
+
+.border-right {
+  border-right: solid rgb(160, 160, 160) 1px;
+}
+
+.border-bottom {
+  border-bottom: solid rgb(160, 160, 160) 1px;
 }
