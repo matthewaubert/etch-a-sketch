@@ -1,0 +1,11 @@
+.row {
+  display: flex;
+}
+
+.waiting {
+  background-color: white;
+}
+
+.triggered {
+  background-color: black;
+}

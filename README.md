@@ -14,3 +14,16 @@
   • What's the desired output?
     The desired output is a grid of squares that changes colors as the user hovers over them.
 3. Pseudocode
+  function to create grid; input: size (default 16)
+    create a selector for container div
+
+    do this size times:
+      create a row div element
+      add class to div
+      do this size times:
+        create div element
+        add class to div
+        add div element to row
+      add row div to container
+      
+
