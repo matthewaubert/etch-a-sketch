@@ -1,9 +1,11 @@
 createGrid();
+moveSlider();
 
 // function to create grid; input: size (default 16)
 function createGrid(size = 16) {
   // create a selector for container div
   const container = document.querySelector('#container');
+  container.innerHTML = ''; // clear container
 
   for (let i = 0; i < size; i++) { // do this size times:
     const row = document.createElement('div'); // create row div element
@@ -23,4 +25,17 @@ function createGrid(size = 16) {
     }
     container.appendChild(row); // add row div to container
   }
+}
+
+// add event listener to slider that calls createGrid
+function moveSlider() {
+  // create selector for slider
+  const slider = document.querySelector('#slider');
+  // add event listener to slider that replaces grid size text with slider value
+  slider.addEventListener('input', () => {
+    const gridSize = document.querySelector('#grid-size');
+    gridSize.textContent = `Grid size: ${slider.value} x ${slider.value}`
+  });
+  // add event listener to slider that calls createGrid with input of slider value
+  slider.addEventListener('click', () => createGrid(slider.value));
 }
