@@ -17,12 +17,23 @@ body {
 #settings {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  justify-content: space-between;
 }
 
 h1 {
   font-size: 32px;
   font-family: 'Silkscreen', 'Roboto', sans-serif;
+}
+
+#buttons button {
+  margin: 6px 0;
+  width: 100%;
+  height: 32px;
+  /* border: solid rgb(160, 160, 160) 1px;
+  border-radius: 6px; */
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: rgb(45, 45, 45);
 }
 
 input[type="range"] {
