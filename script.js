@@ -1,5 +1,10 @@
-createGrid();
-moveSlider();
+startGame();
+
+function startGame() {
+  createGrid();
+  moveSlider();
+  clearBoard();
+}
 
 // function to create grid; input: size (default 16)
 function createGrid(size = 16) {
@@ -19,7 +24,7 @@ function createGrid(size = 16) {
       if (i === size - 1) column.classList.add('border-bottom');
       column.style.width = `${100 / size}%`;
 
-      column.addEventListener('mouseover', () => column.classList.add('triggered'));
+      column.addEventListener('mouseover', () => column.classList.replace('waiting', 'triggered'));
 
       row.appendChild(column); // add div element to row
     }
@@ -38,4 +43,16 @@ function moveSlider() {
   });
   // add event listener to slider that calls createGrid with input of slider value
   slider.addEventListener('click', () => createGrid(slider.value));
+}
+
+// function that clears board
+function clearBoard() {
+  // add event listener to clear button
+  const clearBtn = document.querySelector('#clear-btn');
+  clearBtn.addEventListener('click', () => {
+    // select all triggered divs
+    const triggered = document.querySelectorAll('.triggered');
+    // iterate over divs, replace triggered class with waiting class
+    triggered.forEach(div => div.classList.replace('triggered', 'waiting'));
+  });
 }

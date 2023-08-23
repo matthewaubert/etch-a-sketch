@@ -8,7 +8,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 50px;
-  margin-top: 35px;
+  margin-top: 36px;
   font-family: 'Roboto', sans-serif;
   color: rgb(45, 45, 45);
   background-color: rgb(230, 230, 230);
@@ -23,6 +23,7 @@ body {
 h1 {
   font-size: 32px;
   font-family: 'Silkscreen', 'Roboto', sans-serif;
+  margin-bottom: 36px;
 }
 
 #buttons button {
