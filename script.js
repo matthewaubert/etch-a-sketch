@@ -53,7 +53,6 @@ function changeAction(el, color) {
 
   function enableDraw() {
     el.classList.replace('waiting', 'triggered');
-    console.log(color);
     el.style.backgroundColor = color; // change background to color
   }
   function enableErase() {
