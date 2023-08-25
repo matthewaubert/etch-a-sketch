@@ -26,17 +26,45 @@ h1 {
   margin-bottom: 36px;
 }
 
+#color-picker-p {
+  margin-bottom: 36px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+#color-picker-c {
+  width: 54px;
+  height: 54px;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow .3s;
+}
+
+#color-picker-c:hover {
+  box-shadow: 0 0 6px ;
+}
+
+input[type="color"] {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  padding: 0;
+  width: 125%;
+  height: 125%;
+  transform: translate(-6px, -6px);
+}
+
 #buttons {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 #buttons button {
   appearance: none;
-  /* margin: 6px 0; */
   width: 100%;
-  height: 32px;
+  height: 36px;
   border: solid rgb(160, 160, 160) 1px;
   border-radius: 4px;
   font-family: 'Roboto', sans-serif;

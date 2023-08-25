@@ -133,7 +133,6 @@ function toggleGrid() {
   // add event listener to Toggle Grid Lines button
   const gridBtn = document.querySelector('#grid-btn');
   gridBtn.addEventListener('click', () => {
-    // e.target.classList.toggle('enabled-btn'); // toggle button btw normal and blue
     // iterate over divs, toggling border class
     topLeft.forEach(div => div.classList.toggle('border-top-left'));
     right.forEach(div => div.classList.toggle('border-right'));
