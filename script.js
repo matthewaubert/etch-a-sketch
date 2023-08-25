@@ -1,6 +1,7 @@
 let eraser = false;
 let rainbow = false;
 createGrid();
+changeColor();
 toggleEraser();
 toggleRainbow();
 clearBoard();
@@ -24,7 +25,7 @@ function createGrid(size = 16) {
       if (i === size - 1) column.classList.add('border-bottom');
       column.style.width = `${100 / size}%`;
 
-      changeAction(column);
+      changeAction(column, 'black');
 
       row.appendChild(column); // add div element to row
     }
@@ -34,7 +35,7 @@ function createGrid(size = 16) {
 }
 
 // function to toggle draw, erase, and rainbow functionality
-function changeAction(el) {
+function changeAction(el, color) {
   if (eraser) { // if eraser is true
     el.removeEventListener('mouseover', enableDraw); // remove draw event listener
     el.removeEventListener('mouseover', enableRainbow); // remove rainbow event listener
@@ -44,6 +45,7 @@ function changeAction(el) {
     el.removeEventListener('mouseover', enableErase); // remove eraser listener
     el.addEventListener('mouseover', enableRainbow); // add rainbow listener
   } else { // if both eraser and rainbow are false
+    el.removeEventListener('mouseover', enableDraw); // remove draw event listener
     el.removeEventListener('mouseover', enableErase); // remove eraser listener
     el.removeEventListener('mouseover', enableRainbow); // remove rainbow event listener
     el.addEventListener('mouseover', enableDraw); // add draw listener
@@ -51,7 +53,8 @@ function changeAction(el) {
 
   function enableDraw() {
     el.classList.replace('waiting', 'triggered');
-    el.style.backgroundColor = 'black'; // change background to black
+    console.log(color);
+    el.style.backgroundColor = color; // change background to color
   }
   function enableErase() {
     el.classList.replace('triggered', 'waiting');
@@ -66,6 +69,17 @@ function changeAction(el) {
   }
 }
 
+// function to add event listener to color picker to change color
+function changeColor() {
+  // create selector for color picker input
+  const colorPicker = document.querySelector('#color-picker-c input');
+  // add event listener to color picker that replaces color with input value
+  colorPicker.addEventListener('input', () => {
+    const columns = document.querySelectorAll('.column'); // select all column divs
+    columns.forEach(column => changeAction(column, colorPicker.value)); // apply new color to each div
+  });
+}
+
 // add event listener to Eraser btn that toggles the eraser
 function toggleEraser() {
   const eraserBtn = document.querySelector('#eraser-btn');
@@ -78,8 +92,10 @@ function toggleEraser() {
     const rainbowBtn = document.querySelector('#rainbow-btn');
     rainbowBtn.classList.remove('enabled-btn');
 
+    const colorPicker = document.querySelector('#color-picker-c input');
+
     const columns = document.querySelectorAll('.column'); // select all column divs
-    columns.forEach(changeAction); // toggle draw/erase functionality
+    columns.forEach(column => changeAction(column, colorPicker.value)); // toggle draw/erase functionality
   });
 }
 
@@ -95,8 +111,10 @@ function toggleRainbow() {
     const eraserBtn = document.querySelector('#eraser-btn');
     eraserBtn.classList.remove('enabled-btn');
 
+    const colorPicker = document.querySelector('#color-picker-c input');
+
     const columns = document.querySelectorAll('.column'); // select all column divs
-    columns.forEach(changeAction);
+    columns.forEach(column => changeAction(column, colorPicker.value));
   });
 }
 

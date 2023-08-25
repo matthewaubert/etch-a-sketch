@@ -36,6 +36,7 @@ h1 {
 #color-picker-c {
   width: 54px;
   height: 54px;
+  border: solid rgb(160, 160, 160) 1px;
   border-radius: 4px;
   overflow: hidden;
   transition: box-shadow .3s;
