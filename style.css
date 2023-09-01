@@ -54,6 +54,7 @@ input[type="color"] {
   width: 125%;
   height: 125%;
   transform: translate(-6px, -6px);
+  cursor: pointer;
 }
 
 #buttons {
@@ -71,6 +72,7 @@ input[type="color"] {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   color: rgb(45, 45, 45);
+  cursor: pointer;
 }
 
 #buttons button:hover {
@@ -86,6 +88,7 @@ input[type="range"] {
   width: 100%;
   accent-color: rgb(0, 120, 255);
   margin-top: 6px;
+  cursor: pointer;
 }
 
 #container {
