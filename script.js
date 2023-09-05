@@ -19,15 +19,16 @@ function createGrid(size = 16) {
     row.style.height = `${100 / size}%`;
 
     for (let j = 0; j < size; j++) { // do this size times:
-      const column = document.createElement('div'); // create div element
-      column.classList.add('column', 'waiting', 'border-top-left'); // add class to div
-      if (j === size - 1) column.classList.add('border-right');
-      if (i === size - 1) column.classList.add('border-bottom');
-      column.style.width = `${100 / size}%`;
+      const cell = document.createElement('div'); // create div element
+      cell.classList.add('cell', 'waiting', 'border-top-left'); // add class to div
+      if (j === size - 1) cell.classList.add('border-right');
+      if (i === size - 1) cell.classList.add('border-bottom');
+      cell.style.width = `${100 / size}%`;
 
-      changeAction(column, 'black');
+      const colorPicker = document.querySelector('#color-picker-c input');
+      changeAction(cell, colorPicker.value);
 
-      row.appendChild(column); // add div element to row
+      row.appendChild(cell); // add div element to row
     }
     container.appendChild(row); // add row div to container
   }
@@ -74,8 +75,8 @@ function changeColor() {
   const colorPicker = document.querySelector('#color-picker-c input');
   // add event listener to color picker that replaces color with input value
   colorPicker.addEventListener('input', () => {
-    const columns = document.querySelectorAll('.column'); // select all column divs
-    columns.forEach(column => changeAction(column, colorPicker.value)); // apply new color to each div
+    const columns = document.querySelectorAll('.cell'); // select all cell divs
+    columns.forEach(cell => changeAction(cell, colorPicker.value)); // apply new color to each div
   });
 }
 
@@ -93,8 +94,8 @@ function toggleEraser() {
 
     const colorPicker = document.querySelector('#color-picker-c input');
 
-    const columns = document.querySelectorAll('.column'); // select all column divs
-    columns.forEach(column => changeAction(column, colorPicker.value)); // toggle draw/erase functionality
+    const columns = document.querySelectorAll('.cell'); // select all cell divs
+    columns.forEach(cell => changeAction(cell, colorPicker.value)); // toggle draw/erase functionality
   });
 }
 
@@ -112,8 +113,8 @@ function toggleRainbow() {
 
     const colorPicker = document.querySelector('#color-picker-c input');
 
-    const columns = document.querySelectorAll('.column'); // select all column divs
-    columns.forEach(column => changeAction(column, colorPicker.value));
+    const columns = document.querySelectorAll('.cell'); // select all cell divs
+    columns.forEach(cell => changeAction(cell, colorPicker.value));
   });
 }
 
